@@ -23,10 +23,11 @@ Person = Ember.Object.extend({
   }
 });
 
-yamada = Person.create({
+App.yamada = Person.create({
   name: "Yamada",
   say: function (str) {
     this._super(str + " " + this.get("name"));
   }
 });
 
+App.yamada.say("hello");
