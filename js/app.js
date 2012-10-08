@@ -19,15 +19,20 @@ App.president = Ember.Object.create({
 
 Person = Ember.Object.extend({
   say: function (str) {
-    alert(str);
+    return "say " + str;
   }
 });
 
 App.yamada = Person.create({
   name: "Yamada",
   say: function (str) {
-    this._super(str + " " + this.get("name"));
+    value = str + " " + this.get("name");
+    return this._super(value);
   }
 });
 
-App.yamada.say("hello");
+App.yamada.reopen({
+  sayHello: function () {
+    return this.say("Hello,");
+  }.property('name')
+});
