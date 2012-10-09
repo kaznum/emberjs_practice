@@ -7,6 +7,16 @@ App.MyView = Em.View.extend({
   }
 });
 
+App.ReplaceView = Em.View.extend({
+  mouseDown: function() {
+    var list = [];
+    for (var i = 10; i < 20; i++) {
+      list.push(App.Person.create({first: "f_name" + i, last: "l_name" + i}));
+    }
+    App.peopleController.set("content", list);
+  }
+});
+
 App.president = Ember.Object.create({
   firstName: "Barack",
   lastName: "Obama",

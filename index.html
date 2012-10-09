@@ -21,8 +21,17 @@
 </head>
 <body>
   <script type="text/x-handlebars">
+    List size: {{App.peopleController.length}}
+  </script>
+  <script type="text/x-handlebars">
     {{#view App.MyView}}
-      <h1>Hello world!</h1>
+      <h1>Add to list</h1>
+    {{/view}}
+  </script>
+
+  <script type="text/x-handlebars">
+    {{#view App.ReplaceView}}
+      <h1>Replace list</h1>
     {{/view}}
   </script>
 
@@ -36,9 +45,11 @@
 
 
 <script type="text/x-handlebars">
-  {{#collection contentBinding="App.peopleController" tagName="ul"}}
-    {{content.first}}!
-  {{/collection}}
+  <ul>
+  {{#each App.peopleController}}
+    <li>{{first}}!</li>
+  {{/each}}
+  </ul>
 </script>
 
 
