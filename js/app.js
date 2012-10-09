@@ -2,8 +2,8 @@ var App = Em.Application.create();
 
 App.MyView = Em.View.extend({
   mouseDown: function() {
-    window.alert("hello world!");
     App.president.set("firstName", "Hello,");
+    App.peopleController.createPerson("f_name", "l_name");
   }
 });
 
@@ -36,3 +36,22 @@ App.yamada.reopen({
     return this.say("Hello,");
   }.property('name')
 });
+
+App.Person = Ember.Object.extend({
+  first: null,
+  last: null
+});
+
+App.peopleController = Ember.ArrayController.create({
+  content: [],
+
+  createPerson: function (firstName, lastName) {
+    var person = App.Person.create({ first: firstName, last: lastName });
+    this.pushObject(person);
+  }
+});
+
+for (var i = 0; i < 5; i++) {
+  App.peopleController.createPerson("f_name" + i, "l_name" + i);
+}
+
