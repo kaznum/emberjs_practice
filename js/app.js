@@ -49,7 +49,10 @@ App.yamada.reopen({
 
 App.Person = Ember.Object.extend({
   first: null,
-  last: null
+  last: null,
+  fullName: function() {
+    return this.get("first") + ' ' + this.get("last")
+  }.property('first', 'last')
 });
 
 App.peopleController = Ember.ArrayController.create({
